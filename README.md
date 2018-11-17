@@ -38,7 +38,7 @@ We are going to build a Decision Tree Classifier to identify which characteristi
 
 ### 5. Presentation:
 
-- [x] Decision Tree Model to predict the characteristic of high potential subscribers
+- [ ] Decision Tree Model to predict the characteristic of high potential subscribers
 
 - [ ] Table to summarize the features selected by the classifier
 
