@@ -24,11 +24,11 @@ _Will an existing bank customer subscribe to a new term deposit through a direct
 
 **Summary of the data:**
 
-    ![](./imgs/data_loaded.PNG)  
+    ![](./imgs/data_loaded.jpg)  
 
 The dataset is related to a phone marketing campaign run by a Portuguese bank where they are trying to sign existing customers up to a new term deposit. The dataset contains ~45,000 examples with data on 20 features for each customer, there are both quantitative and qualitative features. As well, for each example we know whether or not they signed up for the new term deposit.  
 
-**Languague:** Python
+**Language:** Python
   - **Dependencies:**
     1. Pandas
 
@@ -38,7 +38,7 @@ We are going to build a Decision Tree Classifier to identify which characteristi
 
 ### 5. Presentation:
 
-- [ ] Decision Tree Model to predict the characteristis of high potential suscribers
+- [ ] Decision Tree Model to predict the characteristic of high potential subscribers
 
 - [ ] Table to summarize the features selected by the classifier
 
