@@ -33,8 +33,8 @@ def main():
 
     data_customer = pd.read_csv(args.input_file, delimiter=";")
     data_customer = data_customer.drop(["duration", "emp.var.rate", "cons.price.idx", "cons.conf.idx", "euribor3m", "nr.employed"], axis=1)
-    data_customer = pd.get_dummies(data_customer, columns = ["job", "marital", "education", "default", "housing", "loan", "contact", "month", "day_of_week", "poutcome"])
     data_customer.to_csv(args.output_file, index = False)
+    print(data_customer.head())
 
 if __name__ == "__main__":
     main()
