@@ -37,16 +37,20 @@ def main():
     X_train, X_test, y_train, y_test = prep_data(args.input_file)
     Find_Best_Max_Depth(X_train, y_train)
     dec_tree = Create_Decision_Tree(6, X_train, y_train)
+    feat_imp = dec_tree.feature_importances_
 
-    # Write test accuracy of decision tree to file
+    # Write outputs from the Decision Tree Classifier to file
     test_acc = dec_tree.score(X_test, y_test)
     file = open(args.output_file, 'w')
-    file.write('Test Accuracy,' + str(test_acc)) #Give your csv text here.
+    file.write('Test Accuracy,' + str(test_acc) + '\n')
+    file.write('Feature, Feature-Importance \n')
+    for i in range(len(feat_imp)):
+        file.write(str(list(X_train.columns.values)[i]) + ',' + str(feat_imp[i]) + '\n')
     file.close()
 
 
 def prep_data (data):
-    "Reads in data file and prapres it for sklearn DecisionTreeClassifer"
+    "Reads in a data file and prepares it for sklearns' DecisionTreeClassifer."
 
     data_customer = pd.read_csv(data)
 
@@ -54,8 +58,8 @@ def prep_data (data):
     data_customer = pd.get_dummies(data_customer, columns = ["job", "marital", "education", "default", "housing", "loan", "contact", "month", "day_of_week", "poutcome"])
 
     # Get feature variables, and target variables
-    X_feat = data_customer.drop(["y"], axis = 1)
-    y_targ = data_customer["y"]
+    X_feat = data_customer.drop(["sign-up"], axis = 1)
+    y_targ = data_customer["sign-up"]
 
     # Encode target variable numerically
     lab_encode = LabelEncoder()
@@ -66,9 +70,9 @@ def prep_data (data):
     return X_feat_train, X_feat_test, y_targ_train, y_targ_test
 
 def Find_Best_Max_Depth (features, target):
-    "Uses Cross Validation to find the best maximum depth hyperparameter"
+    "Uses Cross Validation to compare different maximum depth hyperparameter values."
 
-    max_depths = [i for i in range(1,51)]
+    max_depths = [i for i in range(1,51 )]
     k_folds = 10
     cv_acc = []
 
@@ -86,7 +90,7 @@ def Find_Best_Max_Depth (features, target):
     plt.savefig("./results/imgs/Cross-Validation-Scores.png")
 
 def Create_Decision_Tree (depth, features, target):
-    "Creates decision tree with the defined maximum depth"
+    "Creates a decision tree with the defined maximum depth."
 
     dec_tree = tree.DecisionTreeClassifier(max_depth= depth)
     dec_tree.fit(features,target)
@@ -96,7 +100,7 @@ def Create_Decision_Tree (depth, features, target):
                                      class_names=["No", "Yes"], filled=True, rounded=True, special_characters=True)
 
     graph = graphviz.Source(dot_data)
-    graph.render("./results/imgs/Decision-Tree", view=False)
+    graph.render("./results/Decision-Tree", view=False)
 
     return dec_tree
 
