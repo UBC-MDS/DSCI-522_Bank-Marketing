@@ -22,7 +22,7 @@ import pandas as pd
 import argparse
 
 # Read in arguments
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description='Please enter the csv file name containing the bank customer data and an output file name to write the clean data to.')
 parser.add_argument('input_file')
 parser.add_argument('output_file')
 args = parser.parse_args()
