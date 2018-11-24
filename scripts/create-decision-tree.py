@@ -1,4 +1,4 @@
-"""
+."""
 create-decision-tree.py
 
 Created on Nov 23, 2018
@@ -11,7 +11,8 @@ Author: Brenden Everitt
 
 Dependencies: argparse, pandas, numpy, matplotlib, graphviv, sklearn
 
-Usage: python create-decision-tree.py ./data/cleaned/bank_data-clean.csv <>
+Usage: python scripts/create-decision-tree.py ./data/cleaned/bank_full.csv <>
+
 
 """
 # Import Packages
@@ -58,8 +59,8 @@ def prep_data (data):
     data_customer = pd.get_dummies(data_customer, columns = ["job", "marital", "education", "default", "housing", "loan", "contact", "month", "day_of_week", "poutcome"])
 
     # Get feature variables, and target variables
-    X_feat = data_customer.drop(["sign-up"], axis = 1)
-    y_targ = data_customer["sign-up"]
+    X_feat = data_customer.drop(["sign_up"], axis = 1)
+    y_targ = data_customer["sign_up"]
 
     # Encode target variable numerically
     lab_encode = LabelEncoder()
