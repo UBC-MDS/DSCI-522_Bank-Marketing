@@ -1,6 +1,6 @@
 Feature, Feature-Importance 
 age,0.08131693584222108
-campaign,0.012717560204165585
+campaign,0.013786305204263485
 pdays,0.5636818705667529
 previous,0.0067255626120475125
 job_admin.,0.003950010151396016
@@ -8,7 +8,7 @@ job_blue-collar,0.004031555482934146
 job_entrepreneur,0.0
 job_housemaid,0.0
 job_management,0.0
-job_retired,0.001322086891813419
+job_retired,0.0
 job_self-employed,0.005787672154606672
 job_services,0.0036216405611445225
 job_student,0.0
@@ -19,7 +19,7 @@ marital_divorced,0.0
 marital_married,0.0
 marital_single,0.0015030300237213483
 marital_unknown,0.0
-education_basic.4y,0.002828611766925784
+education_basic.4y,0.0017598667668278804
 education_basic.6y,0.0
 education_basic.9y,0.0
 education_high.school,0.004161467656581275
@@ -36,8 +36,8 @@ housing_yes,0.0016574531155141516
 loan_no,0.002321384221851997
 loan_unknown,0.0
 loan_yes,0.0020223085518533616
-contact_cellular,0.04220597385029698
-contact_telephone,0.0
+contact_cellular,0.0
+contact_telephone,0.0435280607421103
 month_apr,0.008046867583436167
 month_aug,0.0
 month_dec,0.0
@@ -53,6 +53,6 @@ day_of_week_mon,0.008062560624993026
 day_of_week_thu,0.00559030086770005
 day_of_week_tue,0.002967955591302968
 day_of_week_wed,0.0
-poutcome_failure,0.003024055083353941
+poutcome_failure,0.0
 poutcome_nonexistent,0.0
-poutcome_success,0.0030767267972379685
+poutcome_success,0.006100781880591909
