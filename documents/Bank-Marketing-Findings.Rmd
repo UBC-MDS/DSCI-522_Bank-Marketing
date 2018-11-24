@@ -1,0 +1,22 @@
+---
+title: "Bank Marketing Customer Findings"
+author: "Brenden Everitt, Sabrina Kakei Tse"
+date: "November 23, 2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question
+
+## Background
+
+## Exploratory Data Analysis
+
+## Analysis
+
+## Results
+
+## Further Work
