@@ -31,13 +31,36 @@ The scope of the project is to focus on studying the personal and direct attribu
 
 The above image shows a depth-3 tree generated on this dataset for illusitive purpose only. The full tree has a maximum depth of 6, which can be founded at [here](https://github.com/sabrinatkk/DSCI-522_Bank-Marketing/blob/master/results/imgs/Decision-Tree-full.pdf). The training sample size is 80% of the total size. The dependent variable is the `sign-up` variable, which carries two values indicated by `class=Yes`,`class=No` in each node. The left size of the tree contains a smaller group compared to the left side of the tree.
 
-![Cross Validation Score](../results/imgs/Cross-Validation-Scores.png){width=250px}
+![Cross Validation Score](../results/imgs/Cross-Validation-Scores.png){width=250px}  
 
-While running Cross Validation on the Decision Tree Classifier, the result suggests that the maximum depth of 1 gives the highest model score. In order to expand the tree, we decided to pick the next best score which is the depth of 6 for the full tree. 
+While running Cross Validation on the Decision Tree Classifier, the result suggests that the maximum depth of 1 gives the highest model score. In order to expand the tree, we decided to pick the next best score which is the depth of 6 for the full tree.  
 
 ## Results
 
+### Feature Selection  
+The features the model selected as the most important, determined by the Gini Importance, are seen in the table below. An interesting observation about these features is that all of them, besides age, are related to the timing of the call from the marketing campaign. 
 
+
+```{r show_data, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+my_data <- read_csv("../results/Feature_Importance.csv")
+
+top_features <- my_data %>% 
+    arrange(desc(`Feature-Importance`)) %>% 
+    top_n(10)
+
+knitr::kable(top_features)
+
+```
+
+### Model Accuracy  
+The accuracy of the final model produced, after cross validation to select the max depth hyperparameter value, on the test data is seen below:  
+```{r show_data_2, echo=FALSE, message=FALSE, warning=FALSE}
+test_accuracy <- read_csv("../results/decision-tree-output.csv", col_names = FALSE)
+
+knitr::kable(test_accuracy)
+```
 
 ## Drawbacks and challenges
 
