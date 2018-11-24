@@ -2,18 +2,18 @@
 """
 data_loading-clean.py
 
-Created on Fri Nov 16 19:19:48 2018
+Created on Nov 16, 2018
 
 This scripts imports the 'bank-additional-full.csv' file into a pandas dataframe
 and performs some data cleaning/manipulation in order to prepare it
 for sklearns' DecisionTreeClassifer() and visualization. It then exports the data
 into a new csv file.
 
-Brenden Everitt, Sabrina Tse
+Authors: Brenden Everitt, Sabrina Tse
 
 Dependencies: argparse, pandas
 
-Usage: python bank-additional-full.csv bank_data-clean.csv
+Usage: python data_loading-clean.py bank-additional-full.csv bank_data-clean.csv
 """
 
 # import pandas module
