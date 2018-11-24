@@ -24,17 +24,14 @@ sns.set()
 import argparse
 
 #va
-parser = argparse.ArgumentParser(description="Please enter csv file name and variable for plotting")
+parser = argparse.ArgumentParser(description='Please enter csv file name and variable for plotting. Read `readme` page for available variable names')
 parser.add_argument('input_file')
 parser.add_argument('variable',help="Please enter a variable to compare against `sign-up` ")
 parser.add_argument('output_file')
 args = parser.parse_args()
 
 def main():
-    try:
-        print(args.message)
-    except:
-        pass
+
     #read data
     data = pd.read_csv(args.input_file)
 
