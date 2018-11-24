@@ -13,7 +13,7 @@ Authors: Brenden Everitt, Sabrina Tse
 
 Dependencies: argparse, pandas
 
-Usage: python data_loading-clean.py bank-additional-full.csv bank_data-clean.csv
+Usage: python data_loading-cleaning.py bank-additional-full.csv bank_data-clean.csv
 """
 
 # import pandas module
@@ -35,7 +35,6 @@ def main():
     data_customer.columns.values[-1]="sign-up"
     data_customer = data_customer.drop(["duration", "emp.var.rate", "cons.price.idx", "cons.conf.idx", "euribor3m", "nr.employed"], axis=1)
     data_customer.to_csv(args.output_file, index = False)
-    print(data_customer.head())
 
 if __name__ == "__main__":
     main()
