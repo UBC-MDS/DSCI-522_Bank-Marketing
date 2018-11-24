@@ -25,20 +25,23 @@ The scope of the project is to focus on studying the personal and direct attribu
 
 ## Analysis - Decision Tree Tree
 
-\begin{center}
-\includegraphics[width=5in]{../results/imgs/Decision-Tree-depth3.pdf}
-\end{center}
+```{r, out.width="0.7\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Decision Tree - Depth 3"), echo=FALSE}
+knitr::include_graphics("../results/imgs/Decision-Tree-depth3.pdf")
+```
 
-The above image shows a depth-3 tree generated on this dataset for illusitive purpose only. The full tree has a maximum depth of 6, which can be founded at [here](https://github.com/sabrinatkk/DSCI-522_Bank-Marketing/blob/master/results/imgs/Decision-Tree-full.pdf). The training sample size is 80% of the total size. The dependent variable is the `sign-up` variable, which carries two values indicated by `class=Yes`,`class=No` in each node. The left size of the tree contains a smaller group compared to the left side of the tree.
+Figure 1 shows a depth-3 tree generated on this dataset for illusitive purpose only. The full tree has a maximum depth of 6, which can be founded at [here](https://github.com/sabrinatkk/DSCI-522_Bank-Marketing/blob/master/results/imgs/Decision-Tree-full.pdf). The training sample size is 80% of the total size. The dependent variable is the `sign-up` variable, which carries two values indicated by `class=Yes`,`class=No` in each node. The left side of the tree contains a smaller group compared to the right side of the tree.
 
-![Cross Validation Score](../results/imgs/Cross-Validation-Scores.png){width=250px}  
+```{r, out.width="0.7\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Cross Validation Score"), echo=FALSE}
+knitr::include_graphics("../results/imgs/Cross-Validation-Scores.png")
+```
 
-While running Cross Validation on the Decision Tree Classifier, the result suggests that the maximum depth of 1 gives the highest model score. In order to expand the tree, we decided to pick the next best score which is the depth of 6 for the full tree.  
+
+While running Cross Validation on the Decision Tree Classifier, the result in Figure 2 suggests that the maximum depth of 1 gives the highest model score. In order to expand the tree, we decided to pick the next best score which is the depth of 6 for the full tree.  
 
 ## Results
 
 ### Feature Selection  
-The features the model selected as the most important, determined by the Gini Importance, are seen in the table below. An interesting observation about these features is that all of them, besides age, are related to the timing of the call from the marketing campaign. 
+The features the model selected as the most important, determined by the Gini Importance, are seen in Table 1 below. An interesting observation about these features is that all of them, besides age, are related to the timing of the call from the marketing campaign. 
 
 
 ```{r show_data, echo=FALSE, message=FALSE, warning=FALSE}
@@ -50,27 +53,31 @@ top_features <- my_data %>%
     arrange(desc(`Feature-Importance`)) %>% 
     top_n(10)
 
-knitr::kable(top_features)
+knitr::kable(top_features, 'latex',caption="Feature Importance")
 
 ```
 
 ### Model Accuracy  
-The accuracy of the final model produced, after cross validation to select the max depth hyperparameter value, on the test data is seen below:  
+After cross validation to select the max depth hyperparameter value, the accuracy of the final model produced on the test data is seen in Table 2 below:  
 ```{r show_data_2, echo=FALSE, message=FALSE, warning=FALSE}
 test_accuracy <- read_csv("../results/decision-tree-output.csv", col_names = FALSE)
 
-knitr::kable(test_accuracy)
+knitr::kable(test_accuracy, 'latex',caption="Test Accuracy")
 ```
 
 ## Drawbacks and challenges
 
 - Exploratory data analysis presentation -
-There are 15 qualitative and quantitative variables in the dataset, and each qualitative variable has its subcategories; hence, it is challenging to bring all of the relevant variables together into one graph which could be helpful to explore the interdependence between the variables visually.
+There are 15 qualitative and quantitative variables in the dataset, and each qualitative variable has its subcategories. Thus, it is challenging to bring all of the relevant variables together into one graph which could be helpful to explore the interdependence between the variables visually.
 
 - Decision Tree Classifier -
-*pdays - this variable contains numeric values that indicate the number of days, but it also includes '999', not as a numeric but a categorical value, to indicate that the customer was not previously contacted. This variable has the largest difference between the 'yes' and 'no' group within the target variable, so the tree chose this variable to begin the split. We believe that this may potentially distort the effectiveness of the tree.
+`pdays`: this variable contains numeric values that indicate the number of days, but it also includes '999', not as a numeric but a categorical value, to indicate that the customer was not previously contacted. This variable has the largest difference between the 'yes' and 'no' group within the target variable, so the tree chose this variable to begin the split. We believe that this may potentially distort the effectiveness of the tree.
 
 
 ## Future work
-Given the limited time we had for this project, we only explored the personal attributes at this point. In the future, we hope to expand our study to include the macroeconomic variables to understand the external environments that may indirectly affect the sign-up rate. For example, the macroeconomic indexes can indicate the right timing for the next telemarking campaign. Such information will be useful for the telemarking team.
+
+Given the limited time we had for this project,we only explored the personal attributes at this point. In the future, we hope to expand our study to include the macroeconomic variables to understand the external environments that may indirectly affect the sign-up rate. For example, the macroeconomic indexes can indicate the right timing for the next telemarking campaign. Such information will be useful for the telemarking team.
+
+
+
 
