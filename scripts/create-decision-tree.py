@@ -1,4 +1,4 @@
-."""
+"""
 create-decision-tree.py
 
 Created on Nov 23, 2018
@@ -11,7 +11,7 @@ Author: Brenden Everitt
 
 Dependencies: argparse, pandas, numpy, matplotlib, graphviv, sklearn
 
-Usage: python scripts/create-decision-tree.py ./data/cleaned/bank_full.csv <>
+Usage: python scripts/create-decision-tree.py ./data/cleaned/bank_full.csv ./results/decision-tree-output.csv
 
 
 """
@@ -27,7 +27,7 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn import tree
 
 # Read in arguments
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description='Please enter the csv file name containing the bank customer data and an output file name to write the results to.')
 parser.add_argument('input_file')
 parser.add_argument('output_file')
 args = parser.parse_args()
@@ -44,9 +44,12 @@ def main():
     test_acc = dec_tree.score(X_test, y_test)
     file = open(args.output_file, 'w')
     file.write('Test Accuracy,' + str(test_acc) + '\n')
-    file.write('Feature, Feature-Importance \n')
+    file.close()
+
+    file2 = open("./results/Feature_Importance.csv", 'w')
+    file2.write('Feature, Feature-Importance \n')
     for i in range(len(feat_imp)):
-        file.write(str(list(X_train.columns.values)[i]) + ',' + str(feat_imp[i]) + '\n')
+        file2.write(str(list(X_train.columns.values)[i]) + ',' + str(feat_imp[i]) + '\n')
     file.close()
 
 
@@ -97,11 +100,20 @@ def Create_Decision_Tree (depth, features, target):
     dec_tree.fit(features,target)
 
     # Create visual of the best decision tree
+    # Full Tree
     dot_data = tree.export_graphviz(dec_tree, out_file=None, feature_names=list(features.columns.values),
                                      class_names=["No", "Yes"], filled=True, rounded=True, special_characters=True)
 
     graph = graphviz.Source(dot_data)
-    graph.render("./results/Decision-Tree", view=False)
+    graph.render("./results/imgs/Decision-Tree-full", view=False)
+
+    # First 3 layers of tree
+    dot_data1 = tree.export_graphviz(dec_tree, out_file=None, feature_names=list(features.columns.values),
+                                     class_names=["No", "Yes"], filled=True, rounded=True, special_characters=True,
+                                     max_depth = 3)
+
+    graph1 = graphviz.Source(dot_data1)
+    graph1.render("./results/imgs/Decision-Tree-depth3", view=False)
 
     return dec_tree
 
