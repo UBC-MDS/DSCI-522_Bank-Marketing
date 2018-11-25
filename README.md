@@ -1,6 +1,7 @@
 # Bank Marketing
 
-<img src="https://png.pngtree.com/svg/20161028/telemarketer_839075.png" style="display: inline-block" class="center" width=150>
+<img src="https://png.pngtree.com/svg/20161028/telemarketer_839075.png" class="center" width="200" height="200">
+
 ### Team members:
 
 * Brenden Everitt (github id: everittb)
@@ -88,4 +89,4 @@ Rendering Report into PDF format
 
 ### 7. Final Report
 
-Please click ![here](https://github.com/UBC-MDS/DSCI-522_Bank-Marketing/blob/master/documents/Bank-Marketing-Findings.pdf)
+Please click [here](https://github.com/UBC-MDS/DSCI-522_Bank-Marketing/blob/master/documents/Bank-Marketing-Findings.pdf)
