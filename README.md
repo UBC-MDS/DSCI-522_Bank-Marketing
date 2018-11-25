@@ -80,3 +80,7 @@ Scripts are to be run at the main directory
 **Decision Tree Classifier**
 
 ```python scripts/create-decision-tree.py ./data/cleaned/bank_full.csv ./results/decision-tree-output.csv```
+
+**Report in PDF format**
+
+```Rscript -e "rmarkdown::render('./documents/Bank-Marketing-Findings.Rmd')"```
