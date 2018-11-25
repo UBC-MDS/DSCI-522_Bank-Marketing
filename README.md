@@ -1,6 +1,6 @@
 # Bank Marketing
 
-<img src="https://png.pngtree.com/svg/20161028/telemarketer_839075.png" class="center" width="200" height="200">
+<img src="https://www.freeiconspng.com/uploads/estrat-gia-foco-e-assertividade-para-o-marketing--15.png" class="center" width="400" height="200">
 
 ### Team members:
 
