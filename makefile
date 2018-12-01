@@ -68,7 +68,7 @@ all: documents/Bank-Marketing-Findings.md
 
 # Generate the final report
 
-documents/Bank-Marketing-Findings.md: ./documents/Bank-Marketing-Findings.Rmd ./results/imgs/Cross-Validation-Scores.png ./results/imgs/Decision-Tree-depth2.png ./results/Feature_Importance.csv ./results/decision-tree-output.csv
+documents/Bank-Marketing-Findings.md: ./documents/Bank-Marketing-Findings.Rmd ./results/decision-tree-output.csv
 	Rscript -e "rmarkdown::render('./documents/Bank-Marketing-Findings.Rmd')"
 
 #Clean up intermediate files
