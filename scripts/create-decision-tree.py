@@ -37,13 +37,14 @@ def main():
 
     X_train, X_test, y_train, y_test = prep_data(args.input_file)
     Find_Best_Max_Depth(X_train, y_train)
-    dec_tree = Create_Decision_Tree(6, X_train, y_train)
+    dec_tree = Create_Decision_Tree(4, X_train, y_train)
     feat_imp = dec_tree.feature_importances_
 
     # Write outputs from the Decision Tree Classifier to file
     test_acc = dec_tree.score(X_test, y_test)
     file = open(args.output_file, 'w')
-    file.write('Test Accuracy,' + str(test_acc) + '\n')
+    file.write('Test Accuracy \n')
+    file.write(str(test_acc) + '\n')
     file.close()
 
     file2 = open("./results/Feature_Importance.csv", 'w')
@@ -58,7 +59,7 @@ def prep_data (data):
 
     data_customer = pd.read_csv(data)
 
-    # Drop variables we are not using
+    # Create dummy variables
     data_customer = pd.get_dummies(data_customer, columns = ["job", "marital", "education", "default", "housing", "loan", "contact", "month", "day_of_week", "poutcome"])
 
     # Get feature variables, and target variables
@@ -77,14 +78,12 @@ def Find_Best_Max_Depth (features, target):
     "Uses Cross Validation to compare different maximum depth hyperparameter values."
 
     max_depths = [i for i in range(1,51 )]
-    k_folds = 10
+    k_folds = 5
     cv_acc = []
-
-    dec_tree = tree.DecisionTreeClassifier()
 
     # Perform Cross Validation for all the different max depth values
     for depth in max_depths:
-        dec_tree = tree.DecisionTreeClassifier(max_depth=depth)
+        dec_tree = tree.DecisionTreeClassifier(max_depth=depth, class_weight="balanced", random_state = 1234)
         cv_acc.append(np.mean(cross_val_score(dec_tree, features, target, cv=k_folds)))
 
     plt.plot(max_depths, cv_acc, label = "Cross Validation Accuracy")
@@ -96,7 +95,7 @@ def Find_Best_Max_Depth (features, target):
 def Create_Decision_Tree (depth, features, target):
     "Creates a decision tree with the defined maximum depth."
 
-    dec_tree = tree.DecisionTreeClassifier(max_depth= depth)
+    dec_tree = tree.DecisionTreeClassifier(max_depth= depth, class_weight="balanced", random_state = 1234)
     dec_tree.fit(features,target)
 
     # Create visual of the best decision tree
@@ -105,15 +104,17 @@ def Create_Decision_Tree (depth, features, target):
                                      class_names=["No", "Yes"], filled=True, rounded=True, special_characters=True)
 
     graph = graphviz.Source(dot_data)
+    graph.format = 'png'
     graph.render("./results/imgs/Decision-Tree-full", view=False)
 
     # First 3 layers of tree
     dot_data1 = tree.export_graphviz(dec_tree, out_file=None, feature_names=list(features.columns.values),
                                      class_names=["No", "Yes"], filled=True, rounded=True, special_characters=True,
-                                     max_depth = 3)
+                                     max_depth = 2)
 
     graph1 = graphviz.Source(dot_data1)
-    graph1.render("./results/imgs/Decision-Tree-depth3", view=False)
+    graph1.format = 'png'
+    graph1.render("./results/imgs/Decision-Tree-depth2", view=False)
 
     return dec_tree
 

@@ -1,0 +1,29 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label=<pdays &le; 0.5<br/>gini = 0.5<br/>samples = 32950<br/>value = [16475.0, 16475.0]<br/>class = Yes>, fillcolor="#399de500"] ;
+1 [label=<contact_cellular &le; 0.5<br/>gini = 0.494<br/>samples = 31762<br/>value = [16233.234, 13109.95]<br/>class = No>, fillcolor="#e5813931"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label=<month_oct &le; 0.5<br/>gini = 0.411<br/>samples = 11953<br/>value = [6404.815, 2606.916]<br/>class = No>, fillcolor="#e5813997"] ;
+1 -> 2 ;
+3 [label="(...)", fillcolor="#C0C0C0"] ;
+2 -> 3 ;
+6 [label="(...)", fillcolor="#C0C0C0"] ;
+2 -> 6 ;
+9 [label=<age &le; 59.5<br/>gini = 0.499<br/>samples = 19809<br/>value = [9828.419, 10503.034]<br/>class = Yes>, fillcolor="#399de510"] ;
+1 -> 9 ;
+10 [label="(...)", fillcolor="#C0C0C0"] ;
+9 -> 10 ;
+13 [label="(...)", fillcolor="#C0C0C0"] ;
+9 -> 13 ;
+16 [label=<campaign &le; 7.5<br/>gini = 0.125<br/>samples = 1188<br/>value = [241.766, 3365.05]<br/>class = Yes>, fillcolor="#399de5ed"] ;
+0 -> 16 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+17 [label=<month_may &le; 0.5<br/>gini = 0.123<br/>samples = 1180<br/>value = [237.257, 3365.05]<br/>class = Yes>, fillcolor="#399de5ed"] ;
+16 -> 17 ;
+18 [label="(...)", fillcolor="#C0C0C0"] ;
+17 -> 18 ;
+21 [label="(...)", fillcolor="#C0C0C0"] ;
+17 -> 21 ;
+24 [label=<gini = 0.0<br/>samples = 8<br/>value = [4.508, 0.0]<br/>class = No>, fillcolor="#e58139ff"] ;
+16 -> 24 ;
+}
