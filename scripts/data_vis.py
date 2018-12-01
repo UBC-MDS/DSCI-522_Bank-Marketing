@@ -5,7 +5,7 @@ Created on 2018-11-23
 
 by: Sabrina Tse
 
-This scripts imports the cleaned version of the data 'bank_data-clean.csv' file into a pandas dataframe
+This scripts imports the cleaned version of the data 'bank_full.csv' file into a pandas dataframe
 and summarize data through visualization. For categorical variable, seaborn catplot will be used.
 For continuous variable, seaborn boxplot will be used for presentation.
 
@@ -36,14 +36,14 @@ def main():
     data = pd.read_csv(args.input_file)
 
     #plotting categorical variables vs continuous variables
-    continous_variables=['age','campaign','pdays','previous']
+    continous_variables=['age','campaign','previous']
     if args.variable in continous_variables:
         out = sns.boxplot(x="sign_up",y=args.variable,data=data)
         print(out)
     else:
         out = sns.catplot(x="sign_up",col=args.variable,col_wrap=4,data=data,kind="count",height=3)
         print(out)
-
+    #save results
     plt.savefig(args.output_file)
 
 if __name__ == "__main__":
