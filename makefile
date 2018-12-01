@@ -19,57 +19,56 @@ all: documents/Bank-Marketing-Findings.md
 
 #Create Exploratory Data Analysis
 #plot all variables
-./results/imgs/age.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(age)
+./results/imgs/age.png: ./data/cleaned/bank_full.csv $(age) scripts/data_vis.py
 	python scripts/data_vis.py ./data/cleaned/bank_full.csv age ./results/imgs/age.png
 
-./results/imgs/job.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(job)
+./results/imgs/job.png: ./data/cleaned/bank_full.csv $(job) scripts/data_vis.py
 	python scripts/data_vis.py ./data/cleaned/bank_full.csv job ./results/imgs/job.png
 
-./results/imgs/marital.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(marital)
+./results/imgs/marital.png: ./data/cleaned/bank_full.csv $(marital) scripts/data_vis.py
 	python scripts/data_vis.py ./data/cleaned/bank_full.csv marital ./results/imgs/marital.png
 
-./results/imgs/education.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(education)
+./results/imgs/education.png: ./data/cleaned/bank_full.csv $(education) scripts/data_vis.py
 	python scripts/data_vis.py ./data/cleaned/bank_full.csv education ./results/imgs/education.png
 
-./results/imgs/default.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(default)
+./results/imgs/default.png: ./data/cleaned/bank_full.csv $(default) scripts/data_vis.py
 	python scripts/data_vis.py ./data/cleaned/bank_full.csv default ./results/imgs/default.png
 
-./results/imgs/housing.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(housing)
+./results/imgs/housing.png: ./data/cleaned/bank_full.csv $(housing) scripts/data_vis.py
 	python scripts/data_vis.py ./data/cleaned/bank_full.csv housing ./results/imgs/housing.png
 
-./results/imgs/loan.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(loan)
+./results/imgs/loan.png: ./data/cleaned/bank_full.csv $(loan) scripts/data_vis.py
 	python scripts/data_vis.py ./data/cleaned/bank_full.csv loan ./results/imgs/loading.png
 
-./results/imgs/contact.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(contact)
+./results/imgs/contact.png: ./data/cleaned/bank_full.csv $(contact) scripts/data_vis.py
 	python scripts/data_vis.py ./data/cleaned/bank_full.csv contact ./results/imgs/contact.png
 
-./results/imgs/month.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(month)
+./results/imgs/month.png: ./data/cleaned/bank_full.csv $(month) scripts/data_vis.py
 	python scripts/data_vis.py ./data/cleaned/bank_full.csv month ./results/imgs/month.png
 
-./results/imgs/day_of_week.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(day_of_week)
-		python scripts/data_vis.py ./data/cleaned/bank_full.csv day_of_week ./results/imgs/day_of_week.png
+./results/imgs/day_of_week.png: ./data/cleaned/bank_full.csv $(day_of_week) scripts/data_vis.py)
+	python scripts/data_vis.py ./data/cleaned/bank_full.csv day_of_week ./results/imgs/day_of_week.png
 
-./results/imgs/pdays.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(pdays)
-		python scripts/data_vis.py ./data/cleaned/bank_full.csv campaign ./results/imgs/pdays.png
+./results/imgs/pdays.png: ./data/cleaned/bank_full.csv $(pdays) scripts/data_vis.py
+	python scripts/data_vis.py ./data/cleaned/bank_full.csv campaign ./results/imgs/pdays.png
 
-./results/imgs/previous.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(previous)
-		python scripts/data_vis.py ./data/cleaned/bank_full.csv previous ./results/imgs/previous.png
+./results/imgs/previous.png: ./data/cleaned/bank_full.csv $(previous) scripts/data_vis.py
+	python scripts/data_vis.py ./data/cleaned/bank_full.csv previous ./results/imgs/previous.png
 
-./results/imgs/campaign.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(campaign)
-		python scripts/data_vis.py ./data/cleaned/bank_full.csv campaign ./results/imgs/campaign.png
+./results/imgs/campaign.png: ./data/cleaned/bank_full.csv $(campaign) scripts/data_vis.py
+	python scripts/data_vis.py ./data/cleaned/bank_full.csv campaign ./results/imgs/campaign.png
 
-./results/imgs/poutcome.png: ./data/cleaned/bank_full.csv scripts/data_vis.py $(poutcome)
-		python scripts/data_vis.py ./data/cleaned/bank_full.csv poutcome ./results/imgs/poutcome.png
+./results/imgs/poutcome.png: ./data/cleaned/bank_full.csv $(poutcome) scripts/data_vis.py
+	python scripts/data_vis.py ./data/cleaned/bank_full.csv poutcome ./results/imgs/poutcome.png
 
 
 # Build Decision Tree Classifier
 ./results/decision-tree-output.csv: ./data/cleaned/bank_full.csv  scripts/create-decision-tree.py
 	python scripts/create-decision-tree.py ./data/cleaned/bank_full.csv ./results/decision-tree-output.csv
 
-
 # Generate the final report
 
-documents/Bank-Marketing-Findings.md: ./documents/Bank-Marketing-Findings.Rmd ./results/imgs/Cross-Validation-Scores.png ./results/imgs/Decision-Tree-depth2.png ./results/Feature_Importance.csv ./results/decision-tree-output.csv
+documents/Bank-Marketing-Findings.md: ./documents/Bank-Marketing-Findings.Rmd ./results/decision-tree-output.csv
 	Rscript -e "rmarkdown::render('./documents/Bank-Marketing-Findings.Rmd')"
 
 #Clean up intermediate files
