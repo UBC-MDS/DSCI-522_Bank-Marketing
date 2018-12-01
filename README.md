@@ -77,7 +77,7 @@ Data loading and cleaning
 
 Data visualization
 
-```python scripts/data_exploratory-visualization.py ./data/cleaned/bank_full.csv job ./results/imgs/job_signup.png```
+```python scripts/data_vis.py ./data/cleaned/bank_full.csv job ./results/imgs/job_signup.png```
 
 Decision Tree Classifier
 
