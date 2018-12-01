@@ -33,6 +33,7 @@ def main():
 
     data_customer = pd.read_csv(args.input_file, delimiter=";")
     data_customer.columns.values[-1]="sign_up"
+    data_customer.pdays = data_customer.pdays != 999 # True represent they have been contacted before 
     data_customer = data_customer.drop(["duration", "emp.var.rate", "cons.price.idx", "cons.conf.idx", "euribor3m", "nr.employed"], axis=1)
     data_customer.to_csv(args.output_file, index = False)
 
