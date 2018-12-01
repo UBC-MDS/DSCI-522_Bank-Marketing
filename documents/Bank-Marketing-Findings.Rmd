@@ -55,13 +55,39 @@ We dropped all the variables related to social and economic attributes from our 
 # Analysis 
 
 #### Exploratory Data Analysis
-- Sabrina, can you fill in this section??
+
+Exploratory questions:
+
+- Is there a difference in the median age of the people who signed up and who did not sign up from the training data set?
+
+```{r show_age_stat, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+age_stat <- read_csv("../results/age_stat.csv")
+
+colnames(age_stat)[1] <- "statistics"
+
+kable(age_stat ,caption="Age group statistic")
+
+```
+
+The Age group statistis shows that the average age of both groups are very similar.
+
+- Occupations of the existing customers and their average ages
+
+```{r, echo = FALSE, fig.height=3, fig.width=3, fig.align='center', fig.cap= 'Figure 1'}
+knitr::include_graphics('../results/imgs/job_age.png')
+```
+
+Figure 1 shows the average age of each occupation group witin this customer dataset and further breaks down the occupation group into `yes` and `no`. While it is not surprising to see that the oldest age group is the retired customers, it is interesting to see that those retired customers who signed up for the term deposit are older than those who did not sign up for the deposit. The same case happens in the housemaid and unknown groups. One rational explanation can be that the older the customers are , the more savings they have in their acconut and the more likely to invest through term deposit.
+
+
 
 #### Decision Tree  
 
 The model we chose to predict whether or not a customer would sign up for the new term deposit through a direct marketing campaign was a decision tree. Before developing the decision tree we split our data into a training set (80%) and test set (20%); we then used the training dataset and 5-fold cross-validation to determine the maximum depth that the tree should be. The results from the cross-validation are shown in Figure 1 below.  
 
-```{r, echo = FALSE, fig.height=3, fig.width=3, fig.align='center', fig.cap= 'Figure 1'}
+```{r, echo = FALSE, fig.height=3, fig.width=3, fig.align='center', fig.cap= 'Figure 2'}
 knitr::include_graphics('../results/imgs/Cross-Validation-Scores.png')
 ```
 
@@ -71,7 +97,7 @@ After looking at the results from the cross-validation we decided that having a 
 
 Figure 2 belows shows the first two layers of the final decision tree. The full tree can be found [here](https://github.com/sabrinatkk/DSCI-522_Bank-Marketing/blob/master/results/imgs/Decision-Tree-full.pdf).  
 
-```{r, echo = FALSE, fig.height=3, fig.width=3, fig.align='center', fig.cap= 'Figure 2'}
+```{r, echo = FALSE, fig.height=3, fig.width=3, fig.align='center', fig.cap= 'Figure 3'}
 knitr::include_graphics('../results/imgs/Decision-Tree-depth2.png')
 ``` 
 
