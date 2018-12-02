@@ -56,15 +56,39 @@ Analysis
 
 #### Exploratory Data Analysis
 
--   Sabrina, can you fill in this section??
+Exploratory questions:
+
+-   Is there a difference in the median age of the people who signed up and who did not sign up from the training data set?
+
+| statistics |    age\_yes|       age\_no|
+|:-----------|-----------:|-------------:|
+| count      |  4640.00000|  36548.000000|
+| mean       |    40.91315|     39.911185|
+| std        |    13.83748|      9.898132|
+| min        |    17.00000|     17.000000|
+| 25%        |    31.00000|     32.000000|
+| 50%        |    37.00000|     38.000000|
+| 75%        |    50.00000|     47.000000|
+| max        |    98.00000|     95.000000|
+
+The Age group statistis shows that the average age of both groups are very similar.
+
+-   Occupations of the existing customers and their average ages
+
+<img src="../results/imgs/job_age.png" alt="Figure 1" width="572" />
+<p class="caption">
+Figure 1
+</p>
+
+Figure 1 shows the average age of each occupation group witin this customer dataset and further breaks down the occupation group into `yes` and `no`. While it is not surprising to see that the oldest age group is the retired customers, it is interesting to see that those retired customers who signed up for the term deposit are older than those who did not sign up for the deposit. The same case happens in the housemaid and unknown groups. One rational explanation can be that the older the customers are , the more savings they have in their acconut and the more likely to invest through term deposit.
 
 #### Decision Tree
 
 The model we chose to predict whether or not a customer would sign up for the new term deposit through a direct marketing campaign was a decision tree. Before developing the decision tree we split our data into a training set (80%) and test set (20%); we then used the training dataset and 5-fold cross-validation to determine the maximum depth that the tree should be. The results from the cross-validation are shown in Figure 1 below.
 
-<img src="../results/imgs/Cross-Validation-Scores.png" alt="Figure 1" width="640" />
+<img src="../results/imgs/Cross-Validation-Scores.png" alt="Figure 2" width="640" />
 <p class="caption">
-Figure 1
+Figure 2
 </p>
 
 After looking at the results from the cross-validation we decided that having a depth 4 decision tree would be the best to achieve the most accurate test predictions. Now with the maximum depth of the tree chosen the final decision tree was created using all the training data.
@@ -74,9 +98,9 @@ Results
 
 Figure 2 belows shows the first two layers of the final decision tree. The full tree can be found [here](https://github.com/sabrinatkk/DSCI-522_Bank-Marketing/blob/master/results/imgs/Decision-Tree-full.pdf).
 
-<img src="../results/imgs/Decision-Tree-depth2.png" alt="Figure 2" width="1069" />
+<img src="../results/imgs/Decision-Tree-depth2.png" alt="Figure 3" width="1069" />
 <p class="caption">
-Figure 2
+Figure 3
 </p>
 
 Starting at the root node we see the first split is on 'pdays'. This indicates that if a customer has not been contacted before (ie. pdays = 0) they would go to the left leaf, if a customer had been contacted before they would go to the right. The splitting then continues independently on each of the two subgroups with the goal of having finding a combination of splits that result in leaf nodes being of class "Yes", which indicate that a customer would sign up for the new term deposit.
