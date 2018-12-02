@@ -73,7 +73,7 @@ kable(age_stat ,caption="Age group statistic")
 
 ```
 
-The Age group statistics table shows that the average age of both groups are very similar. So from here, we need to dive in deeper into the sub-groups within the `job` attribute and the average age of each occupation group.
+The Age group statistics table shows that the average age of both groups are very similar. So from here, we need to dive in deeper into the sub-groups within the `job` attribute and the average age of each occupation group. 
 
 - Occupations of the existing customers and their average ages
 

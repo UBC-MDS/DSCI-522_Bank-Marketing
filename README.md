@@ -73,7 +73,7 @@ NOTE: The scripts are to be run at the main directory
 
 **Data Analysis Pipeline - Make**
 
-This command contains the scripts listed the script list below so users do not have to manually enter each script.
+Please use this command line to:
 
 To create report
 
@@ -82,25 +82,6 @@ To create report
 To clean intermediate information
 
 ``` make clean ```
-
-
-**Script list**
-
-Data loading and cleaning
-
-```python scripts/data_loading-cleaning.py ./data/raw-data/bank-additional-full.csv ./data/cleaned/bank_full.csv ```
-
-Exploratory Data Analysis
-
-```python scripts/data_vis.py ./data/cleaned/bank_full.csv job ./results/imgs/job_signup.png```
-
-Decision Tree Classifier
-
-```python scripts/create-decision-tree.py ./data/cleaned/bank_full.csv ./results/decision-tree-output.csv```
-
-Rendering Report into PDF format
-
-```Rscript -e "rmarkdown::render('./documents/Bank-Marketing-Findings.Rmd')" ```
 
 
 ### 8. Final Report
