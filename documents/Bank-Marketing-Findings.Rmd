@@ -56,6 +56,8 @@ We dropped all the variables related to social and economic attributes from our 
 
 #### Exploratory Data Analysis
 
+This section we will focus on exploring the available demographic information of the bank customers.
+
 Exploratory questions:
 
 - Is there a difference in the median age of the people who signed up and who did not sign up from the training data set?
@@ -71,7 +73,7 @@ kable(age_stat ,caption="Age group statistic")
 
 ```
 
-The Age group statistis shows that the average age of both groups are very similar.
+The Age group statistics table shows that the average age of both groups are very similar. So from here, we need to dive in deeper into the sub-groups within the `job` attribute and the average age of each occupation group.
 
 - Occupations of the existing customers and their average ages
 
@@ -79,8 +81,7 @@ The Age group statistis shows that the average age of both groups are very simil
 knitr::include_graphics('../results/imgs/job_age.png')
 ```
 
-Figure 1 shows the average age of each occupation group witin this customer dataset and further breaks down the occupation group into `yes` and `no`. While it is not surprising to see that the oldest age group is the retired customers, it is interesting to see that those retired customers who signed up for the term deposit are older than those who did not sign up for the deposit. The same case happens in the housemaid and unknown groups. One rational explanation can be that the older the customers are , the more savings they have in their acconut and the more likely to invest through term deposit.
-
+Figure 1 shows the average age of each occupation group of the bank customers and further breaks down the occupation group into `yes` and `no` groups. While it is not surprising to see that the oldest age group is the retired customers, it is interesting to see that those retired customers who signed up for the term deposit are about 8-10 years older than those who did not sign up for the deposit. The same case happens in the housemaid and unknown groups but with lesser variances. One rational explanation can be that the older the customers are , the more savings they have in their acconut and the more likely to invest through term deposit.
 
 
 #### Decision Tree  
@@ -138,3 +139,15 @@ There are 15 qualitative and quantitative variables in the dataset, and each qua
 # Future work
 
 Given the limited time we had for this project,we only explored the personal attributes at this point. In the future, we hope to expand our study to include the macroeconomic variables to understand the external environments that may indirectly affect the sign-up rate. For example, the macroeconomic indexes can indicate the right timing for the next telemarking campaign. Such information will be useful for the telemarking team.
+
+# Reference
+
+1. Dataset courtesy of UCI Machine Learning Repository
+
+https://archive.ics.uci.edu/ml/datasets/Bank+Marketing
+
+[Moro et al., 2014] S. Moro, P. Cortez and P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems, Elsevier, 62:22-31, June 2014
+
+2. Project Template
+
+http://projecttemplate.net/getting_started.html
