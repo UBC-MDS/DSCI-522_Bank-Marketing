@@ -44,5 +44,4 @@ clean:
 	rm -f ./results/imgs/age*.png
 
 #clean final report rendered in html format
-	rm -f documents/Bank-Marketing-Findings.md
 	rm -f documents/Bank-Marketing-Findings.html
