@@ -16,10 +16,6 @@ Marketing a new product directly to clients is often an expensive task undertaki
 
 ### 2. Dataset:
 
-Source: https://archive.ics.uci.edu/ml/datasets/Bank+Marketing
-
-[Moro et al., 2014] S. Moro, P. Cortez and P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems, Elsevier, 62:22-31, June 2014
-
 #### Inputs = 15 attributes of existing bank customers and datatype  
 | Data Type   | Variables   |
 |:-----------:|:-----------:|
@@ -27,6 +23,8 @@ Source: https://archive.ics.uci.edu/ml/datasets/Bank+Marketing
 | categorical | job, marital, education, default, housing, loan, contact, month, poutcome, pdays|
 
 source:https://archive.ics.uci.edu/ml/datasets/Bank+Marketing
+
+[Moro et al., 2014] S. Moro, P. Cortez and P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems, Elsevier, 62:22-31, June 2014
 
 ### 3. Question
 **Type:** Predictive
@@ -46,7 +44,7 @@ We are going to build a Decision Tree Classifier to identify which characteristi
 
 1. **Importing and cleaning data**- For variables, we will only consider 15 customer attributes. We excluded `duration` because when predicting whether or not a customer will sign up if they are contacted, it is impossible to know the duration of the call beforehand . In addition, we will also exclude the social and economic attributes: `emp.var.rate, cons.price.idx, cons.conf.idx, euribor3m, and nr.employed` because they are macro-economic factors that are not directly related to the customers that we want to study.
 
-2. **Data Visualization** - For categorical variables, seaborn catplot will be used to plot the variable of interest against the target variable, which is `sign-up `. For continuous variables, seaborn boxplot will be used instead.
+2. **Exploratory Data Analysis** - For categorical variables, seaborn catplot will be used to plot the variable of interest against the target variable, which is `sign-up `. For continuous variables, seaborn boxplot will be used instead. We will include some of the most interesting graphs in the final report.
 
 3. **Hyperparameter for Decision Tree** - we will use k-fold cross-validation to pick the maximum depth of the tree.
 
@@ -62,7 +60,9 @@ We are going to build a Decision Tree Classifier to identify which characteristi
 
   - This table ranks all of the customer features used in the model by Gini importance
 
-### 7. Scripts
+### 7. Package requirements and scripts
+
+NOTE: The scripts are to be run at the main directory
 
 **Dependencies**
 
@@ -71,13 +71,26 @@ We are going to build a Decision Tree Classifier to identify which characteristi
 | Python(3.6.5 :: Anaconda, Inc.) | `panada(0.23.0)`, `argparse`, `numpy(1.14.3)`, `matplotlib(2.2.2)`, `graphviz(0.10.1)`, `sklearn(0.19.1)`, `seaborn(0.9.0)` |
 | R(3.5.0)   | `knitr(1.20)`, `tidyverse(0.2.5)` |
 
-**Scripts are to be run at the main directory**
+**Data Analysis Pipeline - Make**
+
+This command contains the scripts listed the script list below so users do not have to manually enter each script.
+
+To create report
+
+``` make all ```
+
+To clean intermediate information
+
+``` make clean ```
+
+
+**Script list**
 
 Data loading and cleaning
 
 ```python scripts/data_loading-cleaning.py ./data/raw-data/bank-additional-full.csv ./data/cleaned/bank_full.csv ```
 
-Data visualization
+Exploratory Data Analysis
 
 ```python scripts/data_vis.py ./data/cleaned/bank_full.csv job ./results/imgs/job_signup.png```
 
@@ -87,8 +100,9 @@ Decision Tree Classifier
 
 Rendering Report into PDF format
 
-```Rscript -e "rmarkdown::render('./documents/Bank-Marketing-Findings.Rmd')"```
+```Rscript -e "rmarkdown::render('./documents/Bank-Marketing-Findings.Rmd')" ```
+
 
 ### 8. Final Report
 
-Please click [here](https://github.com/UBC-MDS/DSCI-522_Bank-Marketing/blob/master/documents/Bank-Marketing-Findings.pdf)
+Please click [here](https://github.com/UBC-MDS/DSCI-522_Bank-Marketing/blob/master/documents/Bank-Marketing-Findings.md)
