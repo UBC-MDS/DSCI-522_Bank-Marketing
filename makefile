@@ -17,7 +17,7 @@ all: documents/Bank-Marketing-Findings.md
 ./data/cleaned/bank_full.csv: ./data/raw-data/bank-additional-full.csv scripts/data_loading-cleaning.py
 	python scripts/data_loading-cleaning.py ./data/raw-data/bank-additional-full.csv ./data/cleaned/bank_full.csv
 
-#Create Exploratory Data Analysis
+# Create Exploratory Data Analysis
 # create csv and graph
 
 ./results/imgs/age_stat.csv: ./data/cleaned/bank_full.csv $(age) scripts/data_vis.py
@@ -33,15 +33,21 @@ all: documents/Bank-Marketing-Findings.md
 documents/Bank-Marketing-Findings.md: ./documents/Bank-Marketing-Findings.Rmd ./results/imgs/age_stat.csv ./results/decision-tree-output.csv
 	Rscript -e "rmarkdown::render('./documents/Bank-Marketing-Findings.Rmd')"
 
-#Clean up intermediate files
+# Clean up intermediate files
 clean:
-#remove output from loading and cleaning stage
+# remove output from loading and cleaning stage
 	rm -f ./data/cleaned/bank_full.csv
-#remove output from EDA stage
+# remove output from EDA stage
 	rm -f ./results/age-stat.csv
 	rm -f ./results/imgs/job_age.png
 	rm -f ./results/imgs/job*.png
 	rm -f ./results/imgs/age*.png
 
-#clean final report rendered in html format
+# Remove images create by the decision tree
+	rm -f ./results/imgs/Cross-Validation-Scores.png
+	rm -f ./results/imgs/Decision-Tree-depth2.png
+	rm -f ./results/Feature_Importance.csv
+	rm -f ./results/decision-tree-output.csv
+
+# clean final report rendered in html format
 	rm -f documents/Bank-Marketing-Findings.html
