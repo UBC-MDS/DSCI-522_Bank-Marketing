@@ -77,7 +77,7 @@ The Age group statistics table shows that the average age of both groups are ver
 
 -   Occupations of the existing customers and their average ages
 
-<img src="../results/imgs/job_age.png" alt="Figure 1" width="572" />
+<img src="../results/imgs/job_age.png" alt="Figure 1"  />
 <p class="caption">
 Figure 1
 </p>
@@ -88,7 +88,7 @@ Figure 1 shows the average age of each occupation group of the bank customers an
 
 The model we chose to predict whether or not a customer would sign up for the new term deposit through a direct marketing campaign was a decision tree. Before developing the decision tree we split our data into a training set (80%) and test set (20%); we then used the training dataset and 5-fold cross-validation to determine the maximum depth that the tree should be. The results from the cross-validation are shown in Figure 1 below.
 
-<img src="../results/imgs/Cross-Validation-Scores.png" alt="Figure 2" width="640" />
+<img src="../results/imgs/Cross-Validation-Scores.png" alt="Figure 2"  />
 <p class="caption">
 Figure 2
 </p>
@@ -100,7 +100,7 @@ Results
 
 Figure 2 belows shows the first two layers of the final decision tree. The full tree can be found [here](https://github.com/sabrinatkk/DSCI-522_Bank-Marketing/blob/master/results/imgs/Decision-Tree-full.pdf).
 
-<img src="../results/imgs/Decision-Tree-depth2.png" alt="Figure 3" width="1069" />
+<img src="../results/imgs/Decision-Tree-depth2.png" alt="Figure 3"  />
 <p class="caption">
 Figure 3
 </p>

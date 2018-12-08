@@ -45,7 +45,6 @@ clean:
 
 # Remove images create by the decision tree
 	rm -f ./results/imgs/Cross-Validation-Scores.png
-	rm -f ./results/imgs/Decision-Tree-depth2.png
 	rm -f ./results/Feature_Importance.csv
 	rm -f ./results/decision-tree-output.csv
 
