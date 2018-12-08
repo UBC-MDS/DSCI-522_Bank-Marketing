@@ -20,7 +20,7 @@ RUN pip3 install numpy
 RUN pip3 install pandas
 RUN pip3 install seaborn
 RUN pip3 install sklearn
-RUN pip3 intasll graphviz
+RUN pip3 install graphviz
 RUN apt-get update && \
     pip3 install matplotlib && \
     rm -rf /var/lib/apt/lists/*
