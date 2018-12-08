@@ -16,11 +16,12 @@ RUN apt-get update \
 RUN apt-get install -y python3-tk
 
 # install numpy, pandas & matplotlib
+RUN sudo apt-get install -y graphviz
+RUN pip3 install graphviz
 RUN pip3 install numpy
 RUN pip3 install pandas
 RUN pip3 install seaborn
 RUN pip3 install sklearn
-RUN pip3 install graphviz
 RUN apt-get update && \
     pip3 install matplotlib && \
     rm -rf /var/lib/apt/lists/*
