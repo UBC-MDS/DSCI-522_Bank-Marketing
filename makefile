@@ -47,6 +47,7 @@ clean:
 	rm -f ./results/imgs/Cross-Validation-Scores.png
 	rm -f ./results/Feature_Importance.csv
 	rm -f ./results/decision-tree-output.csv
+	rm -f ./results/imgs/Decision-Tree-depth2.png
 
 # clean final report rendered in html format
 	rm -f documents/Bank-Marketing-Findings.html
